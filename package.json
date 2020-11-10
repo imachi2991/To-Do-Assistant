@@ -13,8 +13,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+    "typescript": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,10 +30,7 @@
     "postinstall": "typesync"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -66,7 +62,6 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
     "stylelint": "^13.6.1",
     "stylelint-config-recess-order": "^2.3.0",
     "stylelint-config-standard": "^20.0.0",
@@ -74,15 +69,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged" 
-    } 
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix" 
+      "eslint --fix"
     ],
     "src/**/*.css": [
-      "stylelint --fix" 
-    ] 
+      "stylelint --fix"
+    ]
   }
 }

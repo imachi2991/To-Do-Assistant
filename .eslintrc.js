@@ -1,7 +1,7 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
+		es2020: true,
 	},
 	extends: [
 		'plugin:react/recommended',
@@ -17,19 +17,18 @@ module.exports = {
 		'prettier',
 		'prettier/@typescript-eslint',
 		'prettier/react',
-		'prettier/standard'
+		'prettier/standard',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: {
-				jsx: true
+			jsx: true,
 		},
 		ecmaVersion: 2020,
 		project: './tsconfig.eslint.json',
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-	root: true,
 	plugins: [
 		'@typescript-eslint',
 		'import',
@@ -39,14 +38,17 @@ module.exports = {
 		'react',
 		'react-hooks',
 	],
+	root: true,
 	rules: {
 		'lines-between-class-members': [
 			'error',
 			'always',
 			{
-				exceptAfterSingleLine: true
-			}
+				exceptAfterSingleLine: true,
+			},
 		],
+		// should be rewritten as `['error', { allowAsStatement: true }]` in ESLint 7 or later
+		// SEE: https://github.com/typescript-eslint/typescript-eslint/issues/1184
 		'no-void': 'off',
 		'padding-line-between-statements': [
 			'error',
@@ -66,6 +68,8 @@ module.exports = {
 				'varsIgnorePattern': '_',
 			},
 		],
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": "off",
 		'import/extensions': [
 			'error',
 			'ignorePackages',
@@ -74,21 +78,7 @@ module.exports = {
 				jsx: 'never',
 				ts: 'never',
 				tsx: 'never',
-			}
-		],
-		'react/jsx-filename-extension': [
-			'error',
-			{
-				extensions: ['.jsx', '.tsx']
-			}
-		],
-		'react/jsx-props-no-spreading': [
-			'error',
-			{
-				html: 'enforce',
-				custom: 'enforce',
-				explicitSpread: 'ignore',
-			}
+			},
 		],
 		'prefer-arrow/prefer-arrow-functions': [
 			'error',
@@ -96,22 +86,34 @@ module.exports = {
 				disallowPrototype: true,
 				singleReturnOnly: false,
 				classPropertiesAllowed: false,
-			}
-		]
-	},
-	overrides: [
-		{
-			'files': ['*.tsx'],
-			'rules': {
-				'react/prop-types': 'off',
 			},
+		],
+		'react/jsx-filename-extension': [
+			'error',
+			{
+				extensions: ['.jsx', '.tsx'],
+			},
+		],
+		'react/jsx-props-no-spreading': [
+			'error',
+			{
+				html: 'enforce',
+				custom: 'enforce',
+				explicitSpread: 'ignore',
+			},
+		],
+	},
+	overrides: [{
+		'files': ['*.tsx'],
+		'rules': {
+			'react/prop-types': 'off',
 		},
-	],
+	}, ],
 	settings: {
 		'import/resolver': {
 			node: {
 				paths: ['src'],
-			}
-		}
-	}
+			},
+		},
+	},
 };
